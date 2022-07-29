@@ -10,52 +10,14 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model User {
-  id        String  @id @default(cuid())
-  email     String  @unique
-  firstName String?
-  lastName  String?
-
-  createdAt  DateTime  @default(now())
-  updatedAt  DateTime  @updatedAt
-  archivedAt DateTime?
-  Lead       Lead[]
-
-  // relations
-  leadsCreated  Lead[] @relation(name: "leadsCreated")
-  leadsUpdated  Lead[] @relation(name: "leadsUpdated")
-  leadsArchived Lead[] @relation(name: "leadsCreated")
-}
-
-model Lead {
-  id     String  @id @default(cuid())
-  name   String?
-  leadId String
-  Sale   Sale[]
-
-  createdAt  DateTime  @default(now())
-  updatedAt  DateTime  @updatedAt
-  archivedAt DateTime?
-
-  createdBy  User?   @relation(name: "leadsCreated", fields: [userId], references: [id])
-  updatedBy  User?   @relation(name: "leadsUpdated", fields: [userId], references: [id])
-  ArchivedBy User?   @relation(name: "leadsArchived", fields: [userId], references: [id])
-  userId     String?
-  User       User?   @relation(fields: [userId], references: [id])
-}
-
-model Sale {
-  id                       String    @id @default(cuid())
-  lead                     Lead?     @relation(fields: [leadId], references: [id])
-  leadId                   String?
-  dateOfSale               DateTime?
-  showedUp                 Boolean   @default(true)
-  result                   String?
-  amountContracted         Float?
-  amountContractedCurrency String?
-  notes                    String?
-
-  createdAt  DateTime  @default(now())
-  updatedAt  DateTime  @updatedAt
-  archivedAt DateTime?
+model Payment {
+  id            String    @id @default(cuid())
+  amount        Float?
+  currency      String?
+  dateOfPayment DateTime?
+  from          String?
+  to            String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  archivedAt    DateTime?
 }
