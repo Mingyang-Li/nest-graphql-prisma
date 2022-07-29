@@ -20,4 +20,8 @@ export class PaymentResolver {
   public async deletePayments() {
     return 0;
   }
+
+  public async subscribePayments() {
+    return 0;
+  }
 }
