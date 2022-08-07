@@ -29,11 +29,11 @@ class Payment {
 
   @IsDate()
   @IsOptional()
-  createdAt?: Date | string;
+  createdAt?: Date | string | null;
 
   @IsDate()
   @IsOptional()
-  updatedAt?: Date | string;
+  updatedAt?: Date | string | null;
 
   @IsDate()
   @IsOptional()
