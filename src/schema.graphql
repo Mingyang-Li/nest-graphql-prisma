@@ -111,9 +111,25 @@ enum SortOrder {
 
 type Mutation {
   createPayment(data: PaymentCreateInput!): Payment!
+  updatePayment(where: PaymentWhereUniqueInput!, data: PaymentUpdateInput!): Payment!
 }
 
 input PaymentCreateInput {
+  amount: Float
+  currency: String
+  dateOfPayment: DateTime
+  from: String
+  to: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  archivedAt: DateTime
+}
+
+input PaymentWhereUniqueInput {
+  id: String!
+}
+
+input PaymentUpdateInput {
   amount: Float
   currency: String
   dateOfPayment: DateTime

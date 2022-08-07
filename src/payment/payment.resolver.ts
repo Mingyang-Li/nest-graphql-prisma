@@ -16,12 +16,12 @@ export class PaymentResolver {
     return await this.paymentService.create(args);
   }
 
-  // @Mutation(() => Payment)
-  // public async updatePayment(
-  //   @Args() args: UpdatePaymentArgs,
-  // ): Promise<Payment | null> {
-  //   return await this.paymentService.update({ ...args });
-  // }
+  @Mutation(() => Payment)
+  public async updatePayment(
+    @Args() args: UpdatePaymentArgs,
+  ): Promise<Payment | null> {
+    return await this.paymentService.update(args);
+  }
 
   @Query(() => [Payment])
   public async payments(@Args() args: PaymentFindManyArgs): Promise<Payment[]> {
