@@ -108,3 +108,19 @@ enum SortOrder {
   Asc
   Desc
 }
+
+type Mutation {
+  createPayment(data: PaymentCreateInput!): Payment!
+}
+
+input PaymentCreateInput {
+  id: String
+  amount: Float
+  currency: String
+  dateOfPayment: DateTime
+  from: String
+  to: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  archivedAt: DateTime
+}

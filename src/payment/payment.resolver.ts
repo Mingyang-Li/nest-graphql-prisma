@@ -1,4 +1,5 @@
-import { Args, Query, Resolver } from '@nestjs/graphql';
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { CreatePaymentArgs } from 'src/payment/dtos/CreatePaymentArgs';
 import { Payment } from './dtos/Payment';
 import { PaymentFindManyArgs } from './dtos/PaymentFindManyArgs';
 import { PaymentService } from './payment.service';
@@ -7,9 +8,12 @@ import { PaymentService } from './payment.service';
 export class PaymentResolver {
   constructor(private paymentService: PaymentService) {}
 
-  // public async createPayment(data: any) {
-  //   return await this.paymentService.create(data);
-  // }
+  @Mutation(() => Payment)
+  public async createPayment(
+    @Args() args: CreatePaymentArgs,
+  ): Promise<Payment> {
+    return await this.paymentService.create(args);
+  }
 
   // public async updatePayment() {
   //   return 0;
