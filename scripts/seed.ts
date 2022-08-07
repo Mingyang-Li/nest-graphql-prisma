@@ -51,6 +51,7 @@ const seed = async () => {
     };
     await client.payment.create({ data });
   }
+  client.$disconnect();
 };
 
 seed().catch((error) => {
