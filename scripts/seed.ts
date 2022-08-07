@@ -37,9 +37,9 @@ export const CURRENCIES = [
 ];
 
 const client = new PrismaClient();
-const CT = 50;
+const CT = 100;
 const seed = async () => {
-  for (let i = 0; i <= CT; i++) {
+  for (let i = 0; i < CT; i++) {
     const data: Prisma.PaymentCreateInput = {
       amount: generateRandomNumBetween(100, 10000),
       currency: CURRENCIES[generateRandomNumBetween(0, CURRENCIES.length)],
