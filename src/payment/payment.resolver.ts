@@ -1,5 +1,6 @@
-import { Query, Resolver } from '@nestjs/graphql';
+import { Args, Query, Resolver } from '@nestjs/graphql';
 import { Payment } from './dtos/Payment';
+import { PaymentFindManyArgs } from './dtos/PaymentFindManyArgs';
 import { PaymentService } from './payment.service';
 
 @Resolver(() => [])
@@ -15,8 +16,8 @@ export class PaymentResolver {
   }
 
   @Query(() => [Payment])
-  public async payments() {
-    return 0;
+  public async payments(@Args() args: PaymentFindManyArgs): Promise<Payment[]> {
+    return this.service.findMany(args);
   }
 
   public async deletePayments() {

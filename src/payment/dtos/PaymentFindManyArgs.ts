@@ -12,8 +12,13 @@ class PaymentFindManyArgs {
   @Type(() => PaymentOrderByInput)
   orderBy?: Array<PaymentOrderByInput>;
 
-  skip?: string;
-  take?: string;
+  @Field(() => Number, { nullable: true })
+  @Type(() => Number)
+  skip?: number;
+
+  @Field(() => Number, { nullable: true })
+  @Type(() => Number)
+  take?: number;
 }
 
 export { PaymentFindManyArgs };
