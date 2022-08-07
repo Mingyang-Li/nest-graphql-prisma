@@ -44,20 +44,6 @@ class PaymentCreateInput {
   @Field(() => Date, {
     nullable: true,
   })
-  createdAt?: Date | null;
-
-  @Type(() => Date)
-  @IsOptional()
-  @Field(() => Date, {
-    nullable: true,
-  })
-  updatedAt?: Date | null;
-
-  @Type(() => Date)
-  @IsOptional()
-  @Field(() => Date, {
-    nullable: true,
-  })
   archivedAt?: Date | null;
 }
 
