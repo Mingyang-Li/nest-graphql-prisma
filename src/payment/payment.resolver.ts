@@ -1,4 +1,5 @@
-import { Resolver } from '@nestjs/graphql';
+import { Query, Resolver } from '@nestjs/graphql';
+import { Payment } from './dtos/Payment';
 import { PaymentService } from './payment.service';
 
 @Resolver(() => [])
@@ -13,6 +14,7 @@ export class PaymentResolver {
     return 0;
   }
 
+  @Query(() => [Payment])
   public async payments() {
     return 0;
   }
