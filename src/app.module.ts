@@ -9,11 +9,11 @@ import { join } from 'path';
     PaymentModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      definitions: {
-        path: join(process.cwd(), 'src/schema.graphql'),
-      },
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       playground: true,
     }),
   ],
+  providers: [],
+  exports: [],
 })
 export class AppModule {}
