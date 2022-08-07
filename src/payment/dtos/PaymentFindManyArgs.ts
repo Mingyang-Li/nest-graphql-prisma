@@ -1,8 +1,17 @@
+import { Field } from '@nestjs/graphql';
+import { Type } from 'class-transformer';
+import { PaymentOrderByInput } from './PaymentOrderByInput';
 import { PaymentWhereInput } from './PaymentWhereInput';
 
 class PaymentFindManyArgs {
+  @Field(() => PaymentWhereInput, { nullable: true })
+  @Type(() => PaymentWhereInput)
   where?: PaymentWhereInput;
-  orderBy?: string;
+
+  @Field(() => [PaymentOrderByInput], { nullable: true })
+  @Type(() => PaymentOrderByInput)
+  orderBy?: Array<PaymentOrderByInput>;
+
   skip?: string;
   take?: string;
 }
