@@ -3,7 +3,7 @@ import { Payment } from './dtos/Payment';
 import { PaymentFindManyArgs } from './dtos/PaymentFindManyArgs';
 import { PaymentService } from './payment.service';
 
-@Resolver(() => [])
+@Resolver(() => Payment)
 export class PaymentResolver {
   constructor(private service: PaymentService) {}
 
