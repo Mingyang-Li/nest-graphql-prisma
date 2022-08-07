@@ -5,10 +5,10 @@ import { PaymentService } from './payment.service';
 
 @Resolver(() => Payment)
 export class PaymentResolver {
-  constructor(private service: PaymentService) {}
+  constructor(private paymentService: PaymentService) {}
 
   public async createPayment(data: any) {
-    return await this.service.create(data);
+    return await this.paymentService.create(data);
   }
 
   public async updatePayment() {
@@ -17,7 +17,7 @@ export class PaymentResolver {
 
   @Query(() => [Payment])
   public async payments(@Args() args: PaymentFindManyArgs): Promise<Payment[]> {
-    return this.service.findMany(args);
+    return this.paymentService.findMany(args);
   }
 
   public async deletePayments() {
