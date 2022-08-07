@@ -1,5 +1,6 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { CreatePaymentArgs } from 'src/payment/dtos/CreatePaymentArgs';
+import { UpdatePaymentArgs } from 'src/payment/dtos/UpdatePaymentArgs';
 import { Payment } from './dtos/Payment';
 import { PaymentFindManyArgs } from './dtos/PaymentFindManyArgs';
 import { PaymentService } from './payment.service';
@@ -15,8 +16,11 @@ export class PaymentResolver {
     return await this.paymentService.create(args);
   }
 
-  // public async updatePayment() {
-  //   return 0;
+  // @Mutation(() => Payment)
+  // public async updatePayment(
+  //   @Args() args: UpdatePaymentArgs,
+  // ): Promise<Payment | null> {
+  //   return await this.paymentService.update({ ...args });
   // }
 
   @Query(() => [Payment])

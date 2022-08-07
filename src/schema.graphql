@@ -114,7 +114,6 @@ type Mutation {
 }
 
 input PaymentCreateInput {
-  id: String
   amount: Float
   currency: String
   dateOfPayment: DateTime

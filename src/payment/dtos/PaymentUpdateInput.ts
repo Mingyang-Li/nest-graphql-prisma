@@ -3,7 +3,7 @@ import { Type } from 'class-transformer';
 import { IsOptional } from 'class-validator';
 
 @InputType()
-class PaymentCreateInput {
+class PaymentUpdateInput {
   @Type(() => Number)
   @IsOptional()
   @Field(() => Number, {
@@ -61,4 +61,4 @@ class PaymentCreateInput {
   archivedAt?: Date | null;
 }
 
-export { PaymentCreateInput };
+export { PaymentUpdateInput };

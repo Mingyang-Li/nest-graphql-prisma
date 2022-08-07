@@ -6,7 +6,9 @@ import { PrismaService } from 'nestjs-prisma';
 export class PaymentService {
   constructor(private prisma: PrismaService) {}
 
-  async create(args: any): Promise<any> {
+  async create<T extends Prisma.PaymentCreateArgs>(
+    args: Prisma.SelectSubset<T, Prisma.PaymentCreateArgs>,
+  ): Promise<any> {
     return this.prisma.payment.create(args);
   }
 
@@ -14,5 +16,11 @@ export class PaymentService {
     args: Prisma.SelectSubset<T, Prisma.PaymentFindManyArgs>,
   ): Promise<Payment[]> {
     return this.prisma.payment.findMany(args);
+  }
+
+  async update<T extends Prisma.PaymentUpdateArgs>(
+    args: Prisma.SelectSubset<T, Prisma.PaymentUpdateArgs>,
+  ) {
+    return this.prisma.payment.update(args);
   }
 }
