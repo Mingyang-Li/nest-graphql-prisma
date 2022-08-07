@@ -135,7 +135,5 @@ input PaymentUpdateInput {
   dateOfPayment: DateTime
   from: String
   to: String
-  createdAt: DateTime
-  updatedAt: DateTime
   archivedAt: DateTime
 }
