@@ -8,7 +8,7 @@ export class PaymentService {
 
   async create<T extends Prisma.PaymentCreateArgs>(
     args: Prisma.SelectSubset<T, Prisma.PaymentCreateArgs>,
-  ): Promise<any> {
+  ): Promise<Payment> {
     return this.prisma.payment.create(args);
   }
 
@@ -20,7 +20,7 @@ export class PaymentService {
 
   async update<T extends Prisma.PaymentUpdateArgs>(
     args: Prisma.SelectSubset<T, Prisma.PaymentUpdateArgs>,
-  ) {
+  ): Promise<Payment> {
     return this.prisma.payment.update(args);
   }
 }
