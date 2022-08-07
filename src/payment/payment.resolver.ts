@@ -1,4 +1,5 @@
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Args, Mutation, Query, Resolver, Subscription } from '@nestjs/graphql';
+import { PubSub } from 'graphql-subscriptions';
 import { CreatePaymentArgs } from 'src/payment/dtos/CreatePaymentArgs';
 import { UpdatePaymentArgs } from 'src/payment/dtos/UpdatePaymentArgs';
 import { Payment } from './dtos/Payment';
@@ -7,13 +8,15 @@ import { PaymentService } from './payment.service';
 
 @Resolver(() => Payment)
 export class PaymentResolver {
-  constructor(private paymentService: PaymentService) {}
+  constructor(private paymentService: PaymentService, private pubSub: PubSub) {}
 
   @Mutation(() => Payment)
   public async createPayment(
     @Args() args: CreatePaymentArgs,
   ): Promise<Payment> {
-    return await this.paymentService.create(args);
+    const newPayment = await this.paymentService.create(args);
+    this.pubSub.publish('refreshPayments', { paymentCreated: newPayment });
+    return newPayment;
   }
 
   @Mutation(() => Payment)
@@ -28,11 +31,8 @@ export class PaymentResolver {
     return this.paymentService.findMany(args);
   }
 
-  // public async deletePayments() {
-  //   return 0;
-  // }
-
-  // public async subscribePayments() {
-  //   return 0;
-  // }
+  @Subscription(() => [Payment])
+  public async subscribePayments() {
+    return this.pubSub.asyncIterator('refreshPayments');
+  }
 }

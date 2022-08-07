@@ -137,3 +137,7 @@ input PaymentUpdateInput {
   to: String
   archivedAt: DateTime
 }
+
+type Subscription {
+  subscribePayments: [Payment!]!
+}

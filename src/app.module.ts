@@ -11,6 +11,10 @@ import { join } from 'path';
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.graphql'),
       playground: true,
+      installSubscriptionHandlers: true,
+      subscriptions: {
+        'graphql-ws': true,
+      },
     }),
   ],
   providers: [],
