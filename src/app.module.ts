@@ -8,10 +8,8 @@ import { join } from 'path';
   imports: [
     PaymentModule,
     GraphQLModule.forRoot({
-      driver: ApolloDriver,
-      introspection: true,
-      playground: true,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      driver: ApolloDriver,
     }),
   ],
 })

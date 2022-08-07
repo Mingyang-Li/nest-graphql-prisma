@@ -1,8 +1,9 @@
-import { Field } from '@nestjs/graphql';
+import { ArgsType, Field } from '@nestjs/graphql';
 import { Type } from 'class-transformer';
 import { PaymentOrderByInput } from './PaymentOrderByInput';
 import { PaymentWhereInput } from './PaymentWhereInput';
 
+@ArgsType()
 class PaymentFindManyArgs {
   @Field(() => PaymentWhereInput, { nullable: true })
   @Type(() => PaymentWhereInput)
