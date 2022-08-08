@@ -13,6 +13,9 @@ import { join } from 'path';
       playground: true,
       installSubscriptionHandlers: true,
       subscriptions: {
+        'subscriptions-transport-ws': {
+          path: '/graphql',
+        },
         'graphql-ws': true,
       },
     }),

@@ -15,15 +15,17 @@ export class PaymentResolver {
     @Args() args: CreatePaymentArgs,
   ): Promise<Payment> {
     const newPayment = await this.paymentService.create(args);
-    this.pubSub.publish('refreshPayments', { paymentCreated: newPayment });
+    this.pubSub.publish('paymentsUpdated', newPayment);
     return newPayment;
   }
 
   @Mutation(() => Payment)
   public async updatePayment(
     @Args() args: UpdatePaymentArgs,
-  ): Promise<Payment | null> {
-    return await this.paymentService.update(args);
+  ): Promise<Payment> {
+    const updatedPayment = await this.paymentService.update(args);
+    this.pubSub.publish('paymentsUpdated', updatedPayment);
+    return updatedPayment;
   }
 
   @Query(() => [Payment])
@@ -33,6 +35,6 @@ export class PaymentResolver {
 
   @Subscription(() => [Payment])
   public async subscribePayments() {
-    return this.pubSub.asyncIterator('refreshPayments');
+    return this.pubSub.asyncIterator('paymentsUpdated');
   }
 }
