@@ -27,6 +27,15 @@ $ yarn run start:prod
 
 ## Database-related
 ```bash
+# Create postgres database in local docker container
+1. Download Docker
+2. Open it
+3. In project root folder run the following command
+$ yarn docker:db
+
+# Initialise the database - once it has been created in docker
+$ yarn db:init
+
 # seeding database
 $ npx prisma seed
 ```
