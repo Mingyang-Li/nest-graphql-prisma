@@ -52,7 +52,7 @@ const clearTable = async (table: ITable) => {
   switch (table) {
     case 'Payment':
       await client.payment.deleteMany({}).then(
-        () => console.log(`✅ Cleared ${table}`),
+        () => console.log(`✅ Cleared ${table} table`),
       );
   }
 }
