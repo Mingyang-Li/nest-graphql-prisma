@@ -139,7 +139,3 @@ input PaymentUpdateInput {
   status: String
   archivedAt: DateTime
 }
-
-type Subscription {
-  subscribePayments(where: PaymentWhereInput, orderBy: [PaymentOrderByInput!], skip: Float, take: Float): [Payment!]!
-}

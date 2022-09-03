@@ -1,4 +1,4 @@
-import { Args, Mutation, Query, Resolver, Subscription } from '@nestjs/graphql';
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { PubSub } from 'graphql-subscriptions';
 import { CreatePaymentArgs } from 'src/payment/dtos/CreatePaymentArgs';
 import { UpdatePaymentArgs } from 'src/payment/dtos/UpdatePaymentArgs';
@@ -33,11 +33,11 @@ export class PaymentResolver {
     return this.paymentService.findMany(args);
   }
 
-  @Subscription(() => [Payment])
+  // @Subscription(() => [Payment])
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public async subscribePayments(@Args() args: PaymentFindManyArgs) {
-    // return an Payment array every time updatedPayment and createPayment is executed successfully
-    // the returned array will have to match the filter criteria from args
-    return [args];
-  }
+  // public async subscribePayments(@Args() args: PaymentFindManyArgs) {
+  // return an Payment array every time updatedPayment and createPayment is executed successfully
+  // the returned array will have to match the filter criteria from args
+  // return [args];
+  // }
 }
