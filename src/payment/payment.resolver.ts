@@ -34,7 +34,10 @@ export class PaymentResolver {
   }
 
   @Subscription(() => [Payment])
-  public async subscribePayments() {
-    return this.pubSub.asyncIterator('paymentsUpdated');
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  public async subscribePayments(@Args() args: PaymentFindManyArgs) {
+    // return an Payment array every time updatedPayment and createPayment is executed successfully
+    // the returned array will have to match the filter criteria from args
+    return [args];
   }
 }

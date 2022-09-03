@@ -141,5 +141,5 @@ input PaymentUpdateInput {
 }
 
 type Subscription {
-  subscribePayments: [Payment!]!
+  subscribePayments(where: PaymentWhereInput, orderBy: [PaymentOrderByInput!], skip: Float, take: Float): [Payment!]!
 }
