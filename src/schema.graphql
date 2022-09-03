@@ -9,6 +9,7 @@ type Payment {
   dateOfPayment: DateTime
   from: String
   to: String
+  status: String
   createdAt: DateTime
   updatedAt: DateTime
   archivedAt: DateTime
@@ -30,6 +31,7 @@ input PaymentWhereInput {
   dateOfPayment: DateTimeNullableFilter
   from: StringNullableFilter
   to: StringNullableFilter
+  status: StringNullableFilter
   createdAt: DateTimeNullableFilter
   updatedAt: DateTimeNullableFilter
   archivedAt: DateTimeNullableFilter
@@ -120,6 +122,7 @@ input PaymentCreateInput {
   dateOfPayment: DateTime
   from: String
   to: String
+  status: String
   archivedAt: DateTime
 }
 
@@ -133,6 +136,7 @@ input PaymentUpdateInput {
   dateOfPayment: DateTime
   from: String
   to: String
+  status: String
   archivedAt: DateTime
 }
 
