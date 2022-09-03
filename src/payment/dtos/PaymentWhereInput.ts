@@ -50,6 +50,13 @@ class PaymentWhereInput {
   })
   to?: StringNullableFilter | string | null;
 
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  status?: StringNullableFilter | string | null;
+
   @Type(() => DateTimeNullableFilter)
   @IsOptional()
   @Field(() => DateTimeNullableFilter, {

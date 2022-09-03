@@ -15,6 +15,7 @@ model Payment {
   amount        Float?
   currency      String?
   dateOfPayment DateTime?
+  status        String?
   from          String?
   to            String?
   createdAt     DateTime  @default(now())

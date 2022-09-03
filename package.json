@@ -19,9 +19,16 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "docker:db": "docker-compose -f docker-compose.db.yml up -d",
+    "seed": "ts-node scripts/seed.ts",
+    "db:migrate-save": "prisma migrate dev",
+    "db:migrate-up": "prisma migrate deploy",
+    "db:clean": "ts-node scripts/clean.ts",
     "db:init": "run-s \"db:migrate-save -- --name 'initial version'\" db:migrate-up seed",
-    "seed": "ts-node scripts/seed.ts"
+    "prisma:generate": "prisma generate",
+    "docker:db": "docker-compose -f docker-compose.db.yml up -d",
+    "docker:build": "docker build .",
+    "compose:up": "docker-compose up -d",
+    "compose:down": "docker-compose down --volumes"
   },
   "dependencies": {
     "@nestjs/apollo": "^10.0.19",

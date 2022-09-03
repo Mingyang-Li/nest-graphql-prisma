@@ -36,9 +36,28 @@ export const CURRENCIES = [
   'CNY',
 ];
 
+const PaymentStatus = [
+  'PENDING',
+  'PROCESSING',
+  'COMPLETED',
+  'FAILED'
+];
+
 const client = new PrismaClient();
 const CT = 100;
-const seed = async () => {
+
+type ITable = 'Payment' | 'Others';
+
+const clearTable = async (table: ITable) => {
+  switch (table) {
+    case 'Payment':
+      await client.payment.deleteMany({}).then(
+        () => console.log(`✅ Cleared ${table} table`),
+      );
+  }
+}
+
+const seedPayments = async () => {
   for (let i = 0; i < CT; i++) {
     const data: Prisma.PaymentCreateInput = {
       amount: generateRandomNumBetween(100, 10000),
@@ -46,11 +65,20 @@ const seed = async () => {
       dateOfPayment: randomDate(new Date('1970-01-01'), new Date()),
       from: `Sender-${generateRandomNumBetween(0, 10)}`,
       to: `Receiver-${generateRandomNumBetween(0, 10)}`,
+      status: PaymentStatus[generateRandomNumBetween(0, PaymentStatus.length)],
       createdAt: new Date(),
       updatedAt: new Date(),
     };
-    await client.payment.create({ data });
+    try {
+      await client.payment.create({ data });
+      console.log(`${i+1} row of payment created`);
+    } catch (error) {
+      throw error;
+    }
   }
+}
+const seed = async () => {
+  seedPayments();
   client.$disconnect();
 };
 

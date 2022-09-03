@@ -52,6 +52,13 @@ class Payment {
   @Type(() => String)
   to?: string | null;
 
+  @Type(() => String)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  status?: string | null;
+
   @Field(() => Date, {
     nullable: true,
   })

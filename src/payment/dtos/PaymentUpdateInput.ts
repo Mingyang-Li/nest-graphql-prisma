@@ -39,6 +39,13 @@ class PaymentUpdateInput {
   })
   to?: string | null;
 
+  @Type(() => String)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  status?: string | null;
+
   @Type(() => Date)
   @IsOptional()
   @Field(() => Date, {
