@@ -23,4 +23,10 @@ export class PaymentService {
   ): Promise<Payment> {
     return this.prisma.payment.update(args);
   }
+
+  async findOne<T extends Prisma.PaymentFindUniqueArgs>(
+    args: Prisma.SelectSubset<T, Prisma.PaymentFindFirstArgs>,
+  ): Promise<Payment> {
+    return this.prisma.payment.findUnique(args);
+  }
 }

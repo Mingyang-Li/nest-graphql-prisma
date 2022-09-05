@@ -1,6 +1,7 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { PubSub } from 'graphql-subscriptions';
 import { CreatePaymentArgs } from 'src/payment/dtos/CreatePaymentArgs';
+import { PaymentFindUniqueArgs } from 'src/payment/dtos/PaymentFindUniqueArgs';
 import { UpdatePaymentArgs } from 'src/payment/dtos/UpdatePaymentArgs';
 import { Payment } from './dtos/Payment';
 import { PaymentFindManyArgs } from './dtos/PaymentFindManyArgs';
@@ -31,6 +32,11 @@ export class PaymentResolver {
   @Query(() => [Payment])
   public async payments(@Args() args: PaymentFindManyArgs): Promise<Payment[]> {
     return this.paymentService.findMany(args);
+  }
+
+  @Query(() => Payment)
+  public async payment(@Args() args: PaymentFindUniqueArgs): Promise<Payment> {
+    return this.paymentService.findOne(args);
   }
 
   // @Subscription(() => [Payment])

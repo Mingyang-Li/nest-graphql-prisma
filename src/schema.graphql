@@ -22,6 +22,7 @@ scalar DateTime
 
 type Query {
   payments(where: PaymentWhereInput, orderBy: [PaymentOrderByInput!], skip: Float, take: Float): [Payment!]!
+  payment(where: PaymentWhereUniqueInput): Payment!
 }
 
 input PaymentWhereInput {
@@ -111,6 +112,10 @@ enum SortOrder {
   Desc
 }
 
+input PaymentWhereUniqueInput {
+  id: String!
+}
+
 type Mutation {
   createPayment(data: PaymentCreateInput!): Payment!
   updatePayment(where: PaymentWhereUniqueInput!, data: PaymentUpdateInput!): Payment!
@@ -124,10 +129,6 @@ input PaymentCreateInput {
   to: String
   status: String
   archivedAt: DateTime
-}
-
-input PaymentWhereUniqueInput {
-  id: String!
 }
 
 input PaymentUpdateInput {
