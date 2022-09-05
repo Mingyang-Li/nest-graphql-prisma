@@ -1,0 +1,23 @@
+service: nest-graphql-prisma
+
+useDotenv: true
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  environment:
+    POSTGRESQL_URL: ${env:POSTGRESQL_URL}
+
+functions:
+  main:
+    handler: dist/serverless.handler
+    events:
+      - http:
+          method: ANY
+          path: /
+      - http:
+          method: ANY
+          path: '{proxy+}'
