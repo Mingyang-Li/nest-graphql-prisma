@@ -44,7 +44,7 @@ const PaymentStatus = [
 ];
 
 const client = new PrismaClient();
-const CT = 100;
+const CT = 500;
 
 type ITable = 'Payment' | 'Others';
 
@@ -63,8 +63,8 @@ const seedPayments = async () => {
       amount: generateRandomNumBetween(100, 10000),
       currency: CURRENCIES[generateRandomNumBetween(0, CURRENCIES.length)],
       dateOfPayment: randomDate(new Date('1970-01-01'), new Date()),
-      from: `Sender-${generateRandomNumBetween(0, 10)}`,
-      to: `Receiver-${generateRandomNumBetween(0, 10)}`,
+      from: `Person-${generateRandomNumBetween(0, 10)}`,
+      to: `Person-${generateRandomNumBetween(0, 10)}`,
       status: PaymentStatus[generateRandomNumBetween(0, PaymentStatus.length)],
       createdAt: new Date(),
       updatedAt: new Date(),
