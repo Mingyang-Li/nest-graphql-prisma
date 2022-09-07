@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Cron } from '@nestjs/schedule';
+import { Cron, CronExpression } from '@nestjs/schedule';
 import { Payment, Prisma } from '@prisma/client';
 import { PrismaService } from 'nestjs-prisma';
 import { HelperService } from 'src/common/helper.service';
@@ -35,8 +35,8 @@ export class PaymentService {
     return await this.prisma.payment.findUnique(args);
   }
 
-  // trigger this every 24 hours, at 9am every day
-  @Cron('* * 9 * * *')
+  // trigger this every 12 hours
+  @Cron(CronExpression.EVERY_12_HOURS)
   protected async keepDBAlive(): Promise<Payment> {
     const randomPayments = await this.prisma.payment.findMany({
       where: {
