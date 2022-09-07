@@ -5,7 +5,8 @@ Resolvers support:
 1. All CRUD purposes
 2. Filtering by all column data types
 3. Subscriptions of `Array<Payment>` on `update` and `create` by filter args - In progress
-4. CRON job updating random DB row to keep `Supabase` free tier DB running (they turn off DBs that aren't active within 7 days) - In progress
+4. CRON job updating random DB row to keep `Supabase` free tier DB running (they turn off DBs that aren't active within 7 days)
+5. Deployed to AWS Lambda via Serverless framework
 
 ## Installation
 
@@ -27,8 +28,8 @@ $ yarn run start:prod
 ```
 
 ## Database-related
-Hosted DB provider: Supabase
-Sadly Heroku will take down all free-tier services from Oct 2022, so I had to find alternative solutions to Heroku Postgres
+### Hosted DB provider: Supabase
+### Sadly Heroku will take down all free-tier services from Oct 2022, so I had to find alternative solutions to Heroku Postgres
 ```bash
 # Create postgres database in local docker container
 1. Download Docker
