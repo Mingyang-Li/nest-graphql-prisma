@@ -7,6 +7,7 @@ plugins:
 
 provider:
   name: aws
+  deploymentMethod: direct
   runtime: nodejs16.x
   environment:
     POSTGRESQL_URL: ${env:POSTGRESQL_URL}
@@ -16,11 +17,8 @@ functions:
     handler: dist/serverless.handler
     events:
       - http:
-          method: ANY
-          path: /
-      - http:
-          method: ANY
-          path: '{proxy+}'
+          method: post
+          path: graphql
 
 package:
   exclude:
