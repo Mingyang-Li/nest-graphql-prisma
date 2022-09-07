@@ -1,10 +1,15 @@
 import { Injectable } from '@nestjs/common';
+import { Cron } from '@nestjs/schedule';
 import { Payment, Prisma } from '@prisma/client';
 import { PrismaService } from 'nestjs-prisma';
+import { HelperService } from 'src/common/helper.service';
 
 @Injectable()
 export class PaymentService {
-  constructor(private prisma: PrismaService) {}
+  constructor(
+    private prisma: PrismaService,
+    private readonly helperService: HelperService,
+  ) {}
 
   public async create<T extends Prisma.PaymentCreateArgs>(
     args: Prisma.SelectSubset<T, Prisma.PaymentCreateArgs>,
@@ -28,5 +33,32 @@ export class PaymentService {
     args: Prisma.SelectSubset<T, Prisma.PaymentFindFirstArgs>,
   ): Promise<Payment> {
     return await this.prisma.payment.findUnique(args);
+  }
+
+  // trigger this every 24 hours, at 9am every day
+  @Cron('* * 9 * * *')
+  protected async keepDBAlive(): Promise<Payment> {
+    const randomPayments = await this.prisma.payment.findMany({
+      where: {
+        amount: {
+          gte: 100,
+          lte: 1000,
+        },
+      },
+      take: 5,
+    });
+    const randomPayment =
+      randomPayments[
+        this.helperService.randomNumBetween(0, randomPayments.length)
+      ];
+    const updated = await this.prisma.payment.update({
+      where: {
+        id: randomPayment.id,
+      },
+      data: {
+        amount: this.helperService.randomNumBetween(10, 100),
+      },
+    });
+    return updated;
   }
 }

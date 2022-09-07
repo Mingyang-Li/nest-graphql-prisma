@@ -3,6 +3,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { PaymentModule } from './payment/payment.module';
 import { join } from 'path';
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { join } from 'path';
         'graphql-ws': true,
       },
     }),
+    ScheduleModule.forRoot(),
   ],
   providers: [],
   exports: [],
