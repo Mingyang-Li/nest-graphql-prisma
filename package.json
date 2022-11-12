@@ -6,7 +6,7 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "deploy": "yarn install --immutable --immutable-cache --check-cache && yarn run build & yarn run start:prod",
+    "deploy": "yarn install --immutable --immutable-cache --check-cache -g @nestjs/cli && yarn run build & yarn run start:prod",
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
