@@ -56,7 +56,7 @@ export class PaymentService {
         id: randomPayment.id,
       },
       data: {
-        amount: this.helperService.randomNumBetween(10, 100),
+        amount: this.helperService.randomNumBetween(100, 1000),
       },
     });
     return updated;
