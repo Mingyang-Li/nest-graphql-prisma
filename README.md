@@ -10,6 +10,9 @@ Other features:
 - CRON job updating random DB row every 12 hours to keep `Supabase` free tier DB running (they turn off DBs that aren't active within 7 days)
 - Deployed to Heroku @ https://nestjs-graphql-prisma.herokuapp.com/graphql
 
+## API in action
+![image](https://user-images.githubusercontent.com/53138432/202895869-793c4140-d16a-4bd7-9a81-062740872f3a.png)
+
 ## Installation
 
 ```bash
