@@ -1,5 +1,5 @@
 import { ArgsType, Field } from '@nestjs/graphql';
-import { PaymentWhereUniqueInput } from 'src/payment/dtos/PaymentWhereUniqueInput';
+import { PaymentWhereUniqueInput } from '@dtos/payment/PaymentWhereUniqueInput';
 
 @ArgsType()
 class PaymentFindUniqueArgs {

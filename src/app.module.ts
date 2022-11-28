@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
-import { PaymentModule } from './payment/payment.module';
+import { PaymentModule } from './modules/payment.module';
 import { join } from 'path';
 import { ScheduleModule } from '@nestjs/schedule';
 

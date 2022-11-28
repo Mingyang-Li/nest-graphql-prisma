@@ -18,6 +18,13 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "esModuleInterop": true,
+     "paths": {
+      "@resolvers/*": ["src/resolvers/*"],
+      "@services/*": ["src/services/*"],
+      "@modules/*": ["src/modules/*"],
+      "@dtos/*": ["src/dtos/*"],
+      "@util/*": ["src/util/*"]
+    }
   },
   "include": ["src/**/*.ts", "src/**/*.json", ".env"]
 }
