@@ -39,25 +39,12 @@ export class PaymentService {
   @Cron(CronExpression.EVERY_12_HOURS)
   protected async keepDBAlive(): Promise<Payment> {
     const randomPayments = await this.prisma.payment.findMany({
-      where: {
-        amount: {
-          gte: 100,
-          lte: 1000,
-        },
-      },
-      take: 5,
+      take: 2,
     });
-    const randomPayment =
-      randomPayments[
-        this.helperService.randomNumBetween(0, randomPayments.length)
-      ];
+    const newPayment = randomPayments[0];
     const updated = await this.prisma.payment.update({
-      where: {
-        id: randomPayment.id,
-      },
-      data: {
-        amount: this.helperService.randomNumBetween(100, 1000),
-      },
+      where: { id: newPayment.id },
+      data: { amount: this.helperService.randomNumBetween(100, 1000) },
     });
     return updated;
   }
