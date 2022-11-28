@@ -1,10 +1,11 @@
 # 🌱 NestJS + GraphQL + Prisma + PostgreSQL Template
 
 ## Description
-Real-world GraphQL API that supports:
+GraphQL API template that supports:
 1. All CRUD purposes with advanced filtering capabilities across all data types for all columns
 2. Disallowing & prohibiting updates on system fields such as `createdAt` and `updatedAt`
-3. Pagination: In progress
+3. Offset-based Pagination on `Payment` table
+4. Subscription for the latest updated/created `Payment`
 
 Other features:
 - CRON job updating random DB row every 12 hours to keep `Supabase` free tier DB running (they turn off DBs that aren't active within 7 days)
