@@ -140,3 +140,7 @@ input PaymentUpdateInput {
   status: String
   archivedAt: DateTime
 }
+
+type Subscription {
+  paymentLatestUpdated: Payment!
+}
