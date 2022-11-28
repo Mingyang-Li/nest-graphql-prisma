@@ -60,14 +60,12 @@ const clearTable = async (table: ITable) => {
 const seedPayments = async () => {
   for (let i = 0; i < CT; i++) {
     const data: Prisma.PaymentCreateInput = {
-      amount: generateRandomNumBetween(100, 10000),
+      amount: parseFloat((generateRandomNumBetween(100, 10000) / 10).toFixed(2)),
       currency: CURRENCIES[generateRandomNumBetween(0, CURRENCIES.length)],
-      dateOfPayment: randomDate(new Date('1970-01-01'), new Date()),
+      dateOfPayment: randomDate(new Date('2021-01-01'), new Date()),
       from: `Person-${generateRandomNumBetween(0, 10)}`,
       to: `Person-${generateRandomNumBetween(0, 10)}`,
       status: PaymentStatus[generateRandomNumBetween(0, PaymentStatus.length)],
-      createdAt: new Date(),
-      updatedAt: new Date(),
     };
     try {
       await client.payment.create({ data });
