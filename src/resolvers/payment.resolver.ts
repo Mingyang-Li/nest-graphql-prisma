@@ -9,7 +9,10 @@ import { PaymentService } from '@services/payment.service';
 
 @Resolver(() => Payment)
 export class PaymentResolver {
-  constructor(private paymentService: PaymentService, private pubSub: PubSub) {}
+  constructor(
+    private readonly paymentService: PaymentService,
+    private readonly pubSub: PubSub,
+  ) {}
 
   @Mutation(() => Payment)
   public async createPayment(

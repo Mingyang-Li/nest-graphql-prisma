@@ -7,7 +7,7 @@ import { PrismaService } from '@services/prisma.service';
 @Injectable()
 export class PaymentService {
   constructor(
-    private prisma: PrismaService,
+    private readonly prisma: PrismaService,
     private readonly helperService: HelperService,
   ) {}
 
