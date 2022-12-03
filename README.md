@@ -9,10 +9,10 @@ GraphQL API template that supports:
 
 Other features:
 - CRON job updating random DB row every 12 hours to keep `Supabase` free tier DB running (they turn off DBs that aren't active within 7 days)
-- Deployed to Heroku @ https://nestjs-graphql-prisma.herokuapp.com/graphql
+- Deployed to Render.com @ https://nest-graphql-prisma-g5s7.onrender.com/graphql
 
 ## API in action
-![image](https://user-images.githubusercontent.com/53138432/202895869-793c4140-d16a-4bd7-9a81-062740872f3a.png)
+![image](https://user-images.githubusercontent.com/53138432/205417698-f5ce8d1c-3777-46ab-bb52-c6cdad79e991.png)
 
 ## Installation
 
