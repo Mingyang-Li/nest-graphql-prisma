@@ -17,7 +17,7 @@ class PaymentFindManyArgs {
   @Type(() => Number)
   skip?: number;
 
-  @Field(() => Number, { nullable: true })
+  @Field(() => Number, { nullable: true, defaultValue: 10 })
   @Type(() => Number)
   take?: number;
 }
