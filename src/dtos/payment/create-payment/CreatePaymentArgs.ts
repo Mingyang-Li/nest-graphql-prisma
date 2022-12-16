@@ -1,5 +1,5 @@
 import { ArgsType, Field } from '@nestjs/graphql';
-import { PaymentCreateInput } from '@dtos/payment/PaymentCreateInput';
+import { PaymentCreateInput } from '@/dtos/payment/create-payment/PaymentCreateInput';
 
 @ArgsType()
 class CreatePaymentArgs {

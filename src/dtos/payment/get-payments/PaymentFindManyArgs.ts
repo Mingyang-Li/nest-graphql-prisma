@@ -1,7 +1,7 @@
 import { ArgsType, Field } from '@nestjs/graphql';
 import { Type } from 'class-transformer';
-import { PaymentOrderByInput } from '@dtos/payment/PaymentOrderByInput';
-import { PaymentWhereInput } from '@dtos/payment/PaymentWhereInput';
+import { PaymentOrderByInput } from '@/dtos/payment/get-payments/PaymentOrderByInput';
+import { PaymentWhereInput } from '@/dtos/payment/get-payments/PaymentWhereInput';
 
 @ArgsType()
 class PaymentFindManyArgs {

@@ -1,11 +1,11 @@
 import { Args, Mutation, Query, Resolver, Subscription } from '@nestjs/graphql';
 import { PubSub } from 'graphql-subscriptions';
-import { CreatePaymentArgs } from '@dtos/payment/CreatePaymentArgs';
-import { Payment } from '@dtos/payment/Payment';
-import { PaymentFindUniqueArgs } from '@dtos/payment/PaymentFindUniqueArgs';
-import { UpdatePaymentArgs } from '@dtos/payment/UpdatePaymentArgs';
-import { PaymentFindManyArgs } from '@dtos/payment/PaymentFindManyArgs';
-import { PaymentService } from '@services/payment.service';
+import { CreatePaymentArgs } from '@/dtos/payment/create-payment/CreatePaymentArgs';
+import { PaymentFindUniqueArgs } from '@/dtos/payment/get-payment/PaymentFindUniqueArgs';
+import { PaymentFindManyArgs } from '@/dtos/payment/get-payments/PaymentFindManyArgs';
+import { Payment } from '@/dtos/payment/Payment';
+import { UpdatePaymentArgs } from '@/dtos/payment/update-payment/UpdatePaymentArgs';
+import { PaymentService } from '@/services/payment.service';
 
 @Resolver(() => Payment)
 export class PaymentResolver {
