@@ -1,6 +1,6 @@
 import { ArgsType, Field } from '@nestjs/graphql';
-import { PaymentUpdateInput } from '@dtos/payment/PaymentUpdateInput';
-import { PaymentWhereUniqueInput } from '@dtos/payment/PaymentWhereUniqueInput';
+import { PaymentWhereUniqueInput } from '@/dtos/payment/get-payment/PaymentWhereUniqueInput';
+import { PaymentUpdateInput } from '@/dtos/payment/update-payment/PaymentUpdateInput';
 
 @ArgsType()
 class UpdatePaymentArgs {

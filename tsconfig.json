@@ -19,11 +19,7 @@
     "noFallthroughCasesInSwitch": false,
     "esModuleInterop": true,
      "paths": {
-      "@resolvers/*": ["src/resolvers/*"],
-      "@services/*": ["src/services/*"],
-      "@modules/*": ["src/modules/*"],
-      "@dtos/*": ["src/dtos/*"],
-      "@util/*": ["src/util/*"]
+      "@/*": ["src/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.json", ".env"]
