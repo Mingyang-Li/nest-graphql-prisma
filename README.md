@@ -1,3 +1,4 @@
+![img](https://github.com/lujakob/nestjs-realworld-example-app/blob/master/project-logo.png)
 # 🌱 NestJS + GraphQL + Prisma + PostgreSQL Template
 
 ## Description
