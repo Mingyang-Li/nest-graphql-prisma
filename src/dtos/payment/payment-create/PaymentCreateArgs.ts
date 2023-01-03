@@ -1,10 +1,10 @@
 import { ArgsType, Field } from '@nestjs/graphql';
-import { PaymentCreateInput } from '@/dtos/payment/create-payment/PaymentCreateInput';
+import { PaymentCreateInput } from '@/dtos/payment/payment-create/PaymentCreateInput';
 
 @ArgsType()
-class CreatePaymentArgs {
+class PaymentCreateArgs {
   @Field(() => PaymentCreateInput, { nullable: false })
   data!: PaymentCreateInput;
 }
 
-export { CreatePaymentArgs };
+export { PaymentCreateArgs };

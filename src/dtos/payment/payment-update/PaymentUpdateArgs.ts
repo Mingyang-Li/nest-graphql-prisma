@@ -1,9 +1,9 @@
 import { ArgsType, Field } from '@nestjs/graphql';
-import { PaymentWhereUniqueInput } from '@/dtos/payment/get-payment/PaymentWhereUniqueInput';
-import { PaymentUpdateInput } from '@/dtos/payment/update-payment/PaymentUpdateInput';
+import { PaymentWhereUniqueInput } from '@/dtos/payment/payment-get-one/PaymentWhereUniqueInput';
+import { PaymentUpdateInput } from '@/dtos/payment/payment-update/PaymentUpdateInput';
 
 @ArgsType()
-class UpdatePaymentArgs {
+class PaymentUpdateArgs {
   @Field(() => PaymentWhereUniqueInput, { nullable: false })
   where!: PaymentWhereUniqueInput;
 
@@ -11,4 +11,4 @@ class UpdatePaymentArgs {
   data!: PaymentUpdateInput;
 }
 
-export { UpdatePaymentArgs };
+export { PaymentUpdateArgs };
