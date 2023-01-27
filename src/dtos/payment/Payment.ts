@@ -1,6 +1,12 @@
 import { Field, ObjectType } from '@nestjs/graphql';
 import { Type } from 'class-transformer';
-import { IsDate, IsNumber, IsOptional, IsString } from 'class-validator';
+import {
+  IsBoolean,
+  IsDate,
+  IsNumber,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 
 @ObjectType()
 class Payment {
@@ -82,6 +88,14 @@ class Payment {
   @IsOptional()
   @Type(() => Date)
   archivedAt?: Date | null;
+
+  @Field(() => Boolean, {
+    nullable: true,
+  })
+  @IsBoolean()
+  @IsOptional()
+  @Type(() => Boolean)
+  archived?: boolean | null;
 }
 
 export { Payment };

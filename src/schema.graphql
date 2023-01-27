@@ -13,6 +13,7 @@ type Payment {
   createdAt: DateTime
   updatedAt: DateTime
   archivedAt: DateTime
+  archived: Boolean
 }
 
 """
@@ -36,6 +37,7 @@ input PaymentWhereInput {
   createdAt: DateTimeNullableFilter
   updatedAt: DateTimeNullableFilter
   archivedAt: DateTimeNullableFilter
+  archived: BooleanFilter
 }
 
 input StringFilter {
@@ -93,6 +95,11 @@ input DateTimeNullableFilter {
   gt: DateTime
   gte: DateTime
   not: DateTime
+}
+
+input BooleanFilter {
+  equals: Boolean
+  not: Boolean
 }
 
 input PaymentOrderByInput {

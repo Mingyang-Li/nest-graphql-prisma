@@ -5,6 +5,7 @@ import { DateTimeNullableFilter } from '@/util/DateTimeNullableFilter';
 import { FloatNullableFilter } from '@/util/FloatNullableFilter';
 import { StringFilter } from '@/util/StringFilter';
 import { StringNullableFilter } from '@/util/StringNullableFilter';
+import { BooleanFilter } from '@/util/BooleanFilter';
 
 @InputType()
 class PaymentWhereInput {
@@ -77,6 +78,13 @@ class PaymentWhereInput {
     nullable: true,
   })
   archivedAt?: DateTimeNullableFilter;
+
+  @Type(() => BooleanFilter)
+  @IsOptional()
+  @Field(() => BooleanFilter, {
+    nullable: true,
+  })
+  archived?: BooleanFilter;
 }
 
 export { PaymentWhereInput };
