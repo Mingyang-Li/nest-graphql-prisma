@@ -6,8 +6,6 @@ import {
   PaymentCreateArgs,
   PaymentFindManyArgs,
   PaymentFindUniqueArgs,
-  PaymentUniqueCurrency,
-  PaymentUniqueStatus,
   PaymentUpdateArgs,
 } from '@/dtos';
 
@@ -57,7 +55,7 @@ export class PaymentResolver {
     return this.pubSub.asyncIterator('paymentLatestUpdated');
   }
 
-  @Query(() => [PaymentUniqueCurrency])
+  @Query(() => [Payment])
   public async uniquePaymentCurrencies(): Promise<Payment[]> {
     return await this.paymentService.findMany({
       distinct: ['currency'],
@@ -67,7 +65,7 @@ export class PaymentResolver {
     });
   }
 
-  @Query(() => [PaymentUniqueStatus])
+  @Query(() => [Payment])
   public async uniquePaymentStatuses(): Promise<Payment[]> {
     return await this.paymentService.findMany({
       distinct: ['status'],

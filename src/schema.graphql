@@ -2,14 +2,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type PaymentUniqueStatus {
-  status: String!
-}
-
-type PaymentUniqueCurrency {
-  currency: String!
-}
-
 type Payment {
   id: String
   amount: Float
@@ -32,8 +24,8 @@ scalar DateTime
 type Query {
   payments(where: PaymentWhereInput, orderBy: [PaymentOrderByInput!], skip: Float, take: Float = 10): [Payment!]!
   payment(where: PaymentWhereUniqueInput): Payment!
-  uniquePaymentCurrencies: [PaymentUniqueCurrency!]!
-  uniquePaymentStatuses: [PaymentUniqueStatus!]!
+  uniquePaymentCurrencies: [Payment!]!
+  uniquePaymentStatuses: [Payment!]!
 }
 
 input PaymentWhereInput {
