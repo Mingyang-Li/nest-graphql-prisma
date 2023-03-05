@@ -30,17 +30,15 @@ export class PaymentService {
   }
 
   public async findOne<T extends Prisma.PaymentFindUniqueArgs>(
-    args: Prisma.SelectSubset<T, Prisma.PaymentFindFirstArgs>,
+    args: Prisma.SelectSubset<T, Prisma.PaymentFindUniqueArgs>,
   ): Promise<Payment> {
     return await this.prisma.payment.findUnique(args);
   }
 
-  // trigger this every 12 hours
-  @Cron(CronExpression.EVERY_12_HOURS)
+  // trigger this every 2 hours
+  @Cron(CronExpression.EVERY_2_HOURS)
   protected async keepDBAlive(): Promise<Payment> {
-    const randomPayments = await this.prisma.payment.findMany({
-      take: 2,
-    });
+    const randomPayments = await this.prisma.payment.findMany({ take: 2 });
     const newPayment = randomPayments[0];
     const updated = await this.prisma.payment.update({
       where: { id: newPayment.id },
