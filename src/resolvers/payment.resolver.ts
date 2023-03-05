@@ -7,7 +7,7 @@ import {
   PaymentFindManyArgs,
   PaymentFindUniqueArgs,
   PaymentUpdateArgs,
-} from '@/dtos';
+} from '@/dtos/payment';
 
 @Resolver(() => Payment)
 export class PaymentResolver {
