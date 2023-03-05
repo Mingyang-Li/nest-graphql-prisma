@@ -31,7 +31,12 @@ export class PaymentResolver {
   public async updatePayment(
     @Args() args: PaymentUpdateArgs,
   ): Promise<Payment> {
-    const updatedPayment = await this.paymentService.update(args);
+    const updatedPayment = await this.paymentService.update({
+      ...args,
+      data: {
+        updatedAt: new Date(),
+      },
+    });
     this.pubSub.publish('paymentLatestUpdated', {
       paymentLatestUpdated: updatedPayment,
     });
