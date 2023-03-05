@@ -2,6 +2,10 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type PaymentUniqueStatus {
+  status: String!
+}
+
 type PaymentUniqueCurrency {
   currency: String!
 }
@@ -29,6 +33,7 @@ type Query {
   payments(where: PaymentWhereInput, orderBy: [PaymentOrderByInput!], skip: Float, take: Float = 10): [Payment!]!
   payment(where: PaymentWhereUniqueInput): Payment!
   uniquePaymentCurrencies: [PaymentUniqueCurrency!]!
+  uniquePaymentStatuses: [PaymentUniqueStatus!]!
 }
 
 input PaymentWhereInput {
