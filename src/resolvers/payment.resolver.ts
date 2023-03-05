@@ -7,6 +7,7 @@ import {
   PaymentFindManyArgs,
   PaymentFindUniqueArgs,
   PaymentUniqueCurrency,
+  PaymentUniqueStatus,
   PaymentUpdateArgs,
 } from '@/dtos';
 
@@ -60,6 +61,16 @@ export class PaymentResolver {
       distinct: ['currency'],
       select: {
         currency: true,
+      },
+    });
+  }
+
+  @Query(() => [PaymentUniqueStatus])
+  public async uniquePaymentStatuses() {
+    return await this.paymentService.findMany({
+      distinct: ['status'],
+      select: {
+        status: true,
       },
     });
   }
