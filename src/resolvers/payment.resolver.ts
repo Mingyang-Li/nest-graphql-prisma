@@ -51,12 +51,14 @@ export class PaymentResolver {
   }
 
   @Subscription(() => Payment)
-  public async paymentLatestUpdated() {
+  public async paymentLatestUpdated(): Promise<
+    AsyncIterator<unknown, any, undefined>
+  > {
     return this.pubSub.asyncIterator('paymentLatestUpdated');
   }
 
   @Query(() => [PaymentUniqueCurrency])
-  public async uniquePaymentCurrencies() {
+  public async uniquePaymentCurrencies(): Promise<Payment[]> {
     return await this.paymentService.findMany({
       distinct: ['currency'],
       select: {
@@ -66,7 +68,7 @@ export class PaymentResolver {
   }
 
   @Query(() => [PaymentUniqueStatus])
-  public async uniquePaymentStatuses() {
+  public async uniquePaymentStatuses(): Promise<Payment[]> {
     return await this.paymentService.findMany({
       distinct: ['status'],
       select: {
