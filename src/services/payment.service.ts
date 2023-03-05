@@ -38,7 +38,10 @@ export class PaymentService {
   // trigger this every 2 hours
   @Cron(CronExpression.EVERY_2_HOURS)
   protected async keepDBAlive(): Promise<Payment> {
-    const randomPayments = await this.prisma.payment.findMany({ take: 2 });
+    const randomPayments = await this.prisma.payment.findMany({
+      take: 2,
+      select: { id: true },
+    });
     const newPayment = randomPayments[0];
     const updated = await this.prisma.payment.update({
       where: { id: newPayment.id },
