@@ -1,16 +1,17 @@
 import { Args, Mutation, Query, Resolver, Subscription } from '@nestjs/graphql';
 import { PubSub } from 'graphql-subscriptions';
 import { PaymentService } from '@/services/payment.service';
-import {
-  Payment,
-  PaymentCreateArgs,
-  PaymentFindManyArgs,
-  PaymentFindUniqueArgs,
-  PaymentUpdateArgs,
-} from '@/dtos/payment';
+import { Logger } from '@nestjs/common';
+import { Payment } from '@/dtos/Payment';
+import { PaymentCreateArgs } from '@/dtos/payment-create.args';
+import { PaymentFindManyArgs } from '@/dtos/payment-find-many.args';
+import { PaymentFindUniqueArgs } from '@/dtos/payment-find-unique.args';
+import { PaymentUpdateArgs } from '@/dtos/payment-update.args';
 
 @Resolver(() => Payment)
 export class PaymentResolver {
+  private readonly logger = new Logger(PaymentResolver.name);
+
   constructor(
     private readonly paymentService: PaymentService,
     private readonly pubSub: PubSub,
@@ -20,6 +21,7 @@ export class PaymentResolver {
   public async createPayment(
     @Args() args: PaymentCreateArgs,
   ): Promise<Payment> {
+    this.logger.log(`Creating a payment`);
     const newPayment = await this.paymentService.create(args);
     this.pubSub.publish('paymentLatestUpdated', {
       paymentLatestUpdated: newPayment,
@@ -31,6 +33,7 @@ export class PaymentResolver {
   public async updatePayment(
     @Args() args: PaymentUpdateArgs,
   ): Promise<Payment> {
+    this.logger.log(`Updating a payment`);
     const updatedPayment = await this.paymentService.update({
       ...args,
       data: {
@@ -45,11 +48,13 @@ export class PaymentResolver {
 
   @Query(() => [Payment])
   public async payments(@Args() args: PaymentFindManyArgs): Promise<Payment[]> {
+    this.logger.log(`Getting a list of payments`);
     return this.paymentService.findMany(args);
   }
 
   @Query(() => Payment)
   public async payment(@Args() args: PaymentFindUniqueArgs): Promise<Payment> {
+    this.logger.log(`Getting one payment`);
     return this.paymentService.findOne(args);
   }
 

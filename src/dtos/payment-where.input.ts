@@ -1,11 +1,11 @@
 import { Field, InputType } from '@nestjs/graphql';
 import { Type } from 'class-transformer';
 import { IsOptional } from 'class-validator';
-import { DateTimeNullableFilter } from '@/util/DateTimeNullableFilter';
-import { FloatNullableFilter } from '@/util/FloatNullableFilter';
-import { StringFilter } from '@/util/StringFilter';
-import { StringNullableFilter } from '@/util/StringNullableFilter';
-import { BooleanFilter } from '@/util/BooleanFilter';
+import { DateTimeNullableFilter } from '@/util/datetime-nullable-filter';
+import { FloatNullableFilter } from '@/util/float-nullable-filter';
+import { StringFilter } from '@/util/string-filter';
+import { StringNullableFilter } from '@/util/string-nullable-filter';
+import { BooleanFilter } from '@/util/boolean-filter';
 
 @InputType()
 class PaymentWhereInput {

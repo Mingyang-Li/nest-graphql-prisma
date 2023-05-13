@@ -1,32 +1,32 @@
 import { Field, InputType } from '@nestjs/graphql';
-import { QueryMode } from './QueryMode';
+import { QueryMode } from './query-mode';
 import { IsOptional } from 'class-validator';
 import { Type } from 'class-transformer';
 
 @InputType({
   isAbstract: true,
 })
-export class StringFilter {
+export class StringNullableFilter {
   @IsOptional()
   @Field(() => String, {
     nullable: true,
   })
   @Type(() => String)
-  equals?: string;
+  equals?: string | null;
 
   @IsOptional()
   @Field(() => [String], {
     nullable: true,
   })
   @Type(() => String)
-  in?: string[];
+  in?: string[] | null;
 
   @IsOptional()
   @Field(() => [String], {
     nullable: true,
   })
   @Type(() => String)
-  notIn?: string[];
+  notIn?: string[] | null;
 
   @IsOptional()
   @Field(() => String, {
