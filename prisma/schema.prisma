@@ -1,22 +1,71 @@
 datasource db {
   provider = "postgresql"
-  url      = env("POSTGRESQL_URL")
+  url      = env("DATABASE_URL")
 }
 
 generator client {
   provider = "prisma-client-js"
 }
 
-model Payment {
-  id            String    @id @default(cuid())
-  amount        Float?
-  currency      String?
-  dateOfPayment DateTime?
-  status        String?
-  from          String?
-  to            String?
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-  archived      Boolean   @default(false)
-  archivedAt    DateTime?
+model User {
+  // system fields
+  id         String    @id @default(cuid())
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  archived   Boolean   @default(false)
+  archivedAt DateTime?
+
+  // scalar fields
+  email     String
+  firstName String
+  lastName  String
+
+  // relations
+  invitedByUserId    String?
+  invitedByUser      User?      @relation("usersInvited", fields: [invitedByUserId], references: [id])
+  usersInvited       User[]    @relation("usersInvited")
+  accountsOfThisUser Account[] @relation("accountsOfThisUser")
+}
+
+model Account {
+  // system fields
+  id         String    @id @default(cuid())
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  archived   Boolean   @default(false)
+  archivedAt DateTime?
+
+  // scalar fields
+  type          String
+  number        String
+  dateActivated DateTime
+  currency      String
+  balance       Float    @default(0)
+
+  // relations
+  userId                          String
+  user                            User          @relation("accountsOfThisUser", fields: [userId], references: [id])
+  transactionsMadeFromThisAccount Transaction[] @relation("transactionsMadeFromThisAccount")
+  transactionsMadeToThisAccount   Transaction[] @relation("transactionsMadeToThisAccount")
+}
+
+model Transaction {
+  // system fields
+  id         String    @id @default(cuid())
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  archived   Boolean   @default(false)
+  archivedAt DateTime?
+
+  // scalar fields
+  amount        Float
+  currency      String
+  dateOfPayment DateTime
+  status        String
+
+  // relations
+  fromAccountId String
+  fromAccount   Account @relation("transactionsMadeFromThisAccount", fields: [fromAccountId], references: [id])
+  toAccountId   String
+  toAccount     Account @relation("transactionsMadeToThisAccount", fields: [toAccountId], references: [id])
 }

@@ -2,18 +2,16 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Payment {
+type Transaction {
   id: String
   amount: Float
   currency: String
   dateOfPayment: DateTime
-  from: String
-  to: String
   status: String
-  createdAt: DateTime
-  updatedAt: DateTime
-  archivedAt: DateTime
-  archived: Boolean
+  fromAccountId: String
+  fromAccount: Account
+  toAccountId: String
+  toAccount: Account
 }
 
 """
@@ -21,135 +19,55 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
+type Account {
+  id: String
+  type: String
+  dateActivated: DateTime
+  currency: String
+  balance: Float
+  userId: String
+  user: User
+  transactionsMadeFromThisAccount: [Transaction!]
+  transactionsMadeToThisAccount: [Transaction!]
+}
+
+type User {
+  id: String
+  email: String
+  firstName: String
+  lastName: String
+  invitedByUserId: String
+  invitedByUser: User
+  usersInvited: [User!]
+  accountsOfThisUser: [Account!]
+}
+
+type UserFindManyResponse {
+  items: [User!]!
+}
+
+type AccountFindManyResponse {
+  items: [Account!]!
+}
+
 type Query {
-  payments(where: PaymentWhereInput, orderBy: [PaymentOrderByInput!], skip: Float, take: Float = 10): [Payment!]!
-  payment(where: PaymentWhereUniqueInput): Payment!
-  uniquePaymentCurrencies: [Payment!]!
-  uniquePaymentStatuses: [Payment!]!
+  FIND_MANY_USERS: UserFindManyResponse!
+  FIND_ONE_USER(args: FindOneArgs!): User!
+  FIND_MANY_ACCOUNTS: AccountFindManyResponse!
+  FIND_ONE_ACCOUNT(args: FindOneArgs!): Account!
 }
 
-input PaymentWhereInput {
-  id: StringFilter
-  amount: FloatNullableFilter
-  currency: StringNullableFilter
-  dateOfPayment: DateTimeNullableFilter
-  from: StringNullableFilter
-  to: StringNullableFilter
-  status: StringNullableFilter
-  createdAt: DateTimeNullableFilter
-  updatedAt: DateTimeNullableFilter
-  archivedAt: DateTimeNullableFilter
-  archived: BooleanFilter
+input FindOneArgs {
+  where: FindOneWhereInput!
 }
 
-input StringFilter {
-  equals: String
-  in: [String!]
-  notIn: [String!]
-  lt: String
-  lte: String
-  gt: String
-  gte: String
-  contains: String
-  startsWith: String
-  endsWith: String
-  mode: QueryMode
-  not: String
-}
-
-enum QueryMode {
-  Default
-  Insensitive
-}
-
-input FloatNullableFilter {
-  equals: Float
-  in: [Float!]
-  notIn: [Float!]
-  lt: Float
-  lte: Float
-  gt: Float
-  gte: Float
-  not: Float
-}
-
-input StringNullableFilter {
-  equals: String
-  in: [String!]
-  notIn: [String!]
-  lt: String
-  lte: String
-  gt: String
-  gte: String
-  contains: String
-  startsWith: String
-  endsWith: String
-  mode: QueryMode
-  not: String
-}
-
-input DateTimeNullableFilter {
-  equals: DateTime
-  in: [DateTime!]
-  notIn: [DateTime!]
-  lt: DateTime
-  lte: DateTime
-  gt: DateTime
-  gte: DateTime
-  not: DateTime
-}
-
-input BooleanFilter {
-  equals: Boolean
-  not: Boolean
-}
-
-input PaymentOrderByInput {
-  id: SortOrder
-  amount: SortOrder
-  currency: SortOrder
-  dateOfPayment: SortOrder
-  from: SortOrder
-  to: SortOrder
-  createdAt: SortOrder
-  updatedAt: SortOrder
-  archivedAt: SortOrder
-}
-
-enum SortOrder {
-  Asc
-  Desc
-}
-
-input PaymentWhereUniqueInput {
+input FindOneWhereInput {
   id: String!
 }
 
 type Mutation {
-  createPayment(data: PaymentCreateInput!): Payment!
-  updatePayment(where: PaymentWhereUniqueInput!, data: PaymentUpdateInput!): Payment!
-}
-
-input PaymentCreateInput {
-  amount: Float
-  currency: String
-  dateOfPayment: DateTime
-  from: String
-  to: String
-  status: String
-  archivedAt: DateTime
-}
-
-input PaymentUpdateInput {
-  amount: Float
-  currency: String
-  dateOfPayment: DateTime
-  from: String
-  to: String
-  status: String
-  archivedAt: DateTime
-}
-
-type Subscription {
-  paymentLatestUpdated: Payment!
+  CREATE_USER: User!
+  UPDATE_USER: User!
+  CREATE_ACCOUNT: Account!
+  UPDATE_ACCOUNT: Account!
 }
