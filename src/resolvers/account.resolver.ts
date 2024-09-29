@@ -1,6 +1,6 @@
 import { Args, Info, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { GraphQLResolveInfo } from 'graphql';
-import { FindOneArgs } from '@/types/commons/find-one.args';
+import { FindOneArgs } from '@/types/common/find-one.args';
 import { AccountFindManyResponse } from '@/types/account/account-find-many.response';
 import { Account } from '@/models/account';
 

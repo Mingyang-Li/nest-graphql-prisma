@@ -9,4 +9,4 @@ const prismaClientOptions: Prisma.Subset<
 
 export const prismaReadService = new PrismaClient(prismaClientOptions);
 
-export const prismaWriteClient = new PrismaClient(prismaClientOptions);
+export const prismaWriteService = new PrismaClient(prismaClientOptions);

@@ -1,5 +1,5 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { FindOneArgs } from '@/types/commons/find-one.args';
+import { FindOneArgs } from '@/types/common/find-one.args';
 import { UserFindManyResponse } from '@/types/user/user-find-many.response';
 import { User } from '@/models/user';
 

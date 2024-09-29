@@ -68,6 +68,8 @@ export const extractfields = (args: ExtractFieldArgs) => {
       }
     }
   }
+
+  return entityFields;
 };
 
 export type GetFieldsRequestedForFindMany = {

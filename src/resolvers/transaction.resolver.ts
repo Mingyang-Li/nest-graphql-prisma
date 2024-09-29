@@ -1,7 +1,7 @@
 import { Args, Query, Resolver } from '@nestjs/graphql';
 import { Transaction } from '@/models/transaction';
 import { TransactionFindManyResponse } from '@/types/transaction/transaction-find-many.response';
-import { FindOneArgs } from '@/types/commons/find-one.args';
+import { FindOneArgs } from '@/types/common/find-one.args';
 
 @Resolver()
 export class TransactionResolver {

@@ -1,11 +1,9 @@
 import { Field, Float, ObjectType } from '@nestjs/graphql';
 import { Account } from './account';
+import { SystemFields } from './system-fields';
 
 @ObjectType()
-export class Transaction {
-  @Field(() => String, { nullable: true })
-  id?: string;
-
+export class Transaction extends SystemFields {
   @Field(() => Float, { nullable: true })
   amount?: Number;
 
