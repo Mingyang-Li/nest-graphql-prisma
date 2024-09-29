@@ -9,10 +9,10 @@ importers:
   .:
     dependencies:
       '@apollo/server':
-        specifier: ^4.11.0
+        specifier: 4.11.0
         version: 4.11.0(graphql@16.9.0)
       '@nestjs/apollo':
-        specifier: ^12.2.0
+        specifier: 12.2.0
         version: 12.2.0(@apollo/server@4.11.0(graphql@16.9.0))(@nestjs/common@10.0.0(reflect-metadata@0.2.0)(rxjs@7.8.1))(@nestjs/core@10.0.0(@nestjs/common@10.0.0(reflect-metadata@0.2.0)(rxjs@7.8.1))(@nestjs/platform-express@10.0.0)(reflect-metadata@0.2.0)(rxjs@7.8.1))(@nestjs/graphql@12.2.0(@nestjs/common@10.0.0(reflect-metadata@0.2.0)(rxjs@7.8.1))(@nestjs/core@10.0.0(@nestjs/common@10.0.0(reflect-metadata@0.2.0)(rxjs@7.8.1))(@nestjs/platform-express@10.0.0)(reflect-metadata@0.2.0)(rxjs@7.8.1))(graphql@16.9.0)(reflect-metadata@0.2.0))(graphql@16.9.0)
       '@nestjs/common':
         specifier: 10.0.0
@@ -21,7 +21,7 @@ importers:
         specifier: 10.0.0
         version: 10.0.0(@nestjs/common@10.0.0(reflect-metadata@0.2.0)(rxjs@7.8.1))(@nestjs/platform-express@10.0.0)(reflect-metadata@0.2.0)(rxjs@7.8.1)
       '@nestjs/graphql':
-        specifier: ^12.2.0
+        specifier: 12.2.0
         version: 12.2.0(@nestjs/common@10.0.0(reflect-metadata@0.2.0)(rxjs@7.8.1))(@nestjs/core@10.0.0(@nestjs/common@10.0.0(reflect-metadata@0.2.0)(rxjs@7.8.1))(@nestjs/platform-express@10.0.0)(reflect-metadata@0.2.0)(rxjs@7.8.1))(graphql@16.9.0)(reflect-metadata@0.2.0)
       '@nestjs/platform-express':
         specifier: 10.0.0
@@ -30,13 +30,13 @@ importers:
         specifier: 5.20.0
         version: 5.20.0(prisma@5.20.0)
       dotenv:
-        specifier: ^16.4.5
+        specifier: 16.4.5
         version: 16.4.5
       graphql:
-        specifier: ^16.9.0
+        specifier: 16.9.0
         version: 16.9.0
       neverthrow:
-        specifier: ^8.0.0
+        specifier: 8.0.0
         version: 8.0.0
       reflect-metadata:
         specifier: 0.2.0
@@ -45,10 +45,10 @@ importers:
         specifier: 7.8.1
         version: 7.8.1
       zod:
-        specifier: ^3.23.8
+        specifier: 3.23.8
         version: 3.23.8
       zod-validation-error:
-        specifier: ^3.4.0
+        specifier: 3.4.0
         version: 3.4.0(zod@3.23.8)
     devDependencies:
       '@nestjs/cli':
@@ -94,7 +94,7 @@ importers:
         specifier: 3.0.0
         version: 3.0.0
       prisma:
-        specifier: ^5.20.0
+        specifier: 5.20.0
         version: 5.20.0
       source-map-support:
         specifier: 0.5.21
