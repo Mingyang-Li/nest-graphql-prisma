@@ -1,8 +1,9 @@
-import { ResolveTree } from 'graphql-parse-resolve-info';
+import { ResolveTree, parseResolveInfo } from 'graphql-parse-resolve-info';
 import * as CrudService from '@/services/crud.service';
 import { User } from '@/models/user';
 import { Account } from '@/models/account';
 import { Transaction } from '@/models/transaction';
+import { GraphQLResolveInfo, __Field } from 'graphql';
 
 export const mapNodeWithPluralNameToSingularEntityName = (
   args: string,
@@ -67,4 +68,37 @@ export const extractfields = (args: ExtractFieldArgs) => {
       }
     }
   }
+};
+
+export type GetFieldsRequestedForFindMany = {
+  info: GraphQLResolveInfo;
+  responseType: string;
+  rootEntityName: CrudService.EntityName;
+};
+export const getFieldsRequestedForFindMany = (
+  args: GetFieldsRequestedForFindMany,
+): CrudService.FieldsRequested => {
+  const { info, responseType, rootEntityName } = args;
+
+  const parsedResolveInfo = parseResolveInfo(info) as ResolveTree;
+
+  const fieldsRequested: CrudService.FieldsRequested = {
+    mainFields: [],
+  };
+
+  if (parsedResolveInfo) {
+    if (parsedResolveInfo?.fieldsByTypeName[responseType]) {
+      const fieldsFromGraphqlInfo =
+        parsedResolveInfo?.fieldsByTypeName[responseType];
+      if (fieldsFromGraphqlInfo) {
+        const resolveTree = fieldsFromGraphqlInfo['items'] as ResolveTree;
+        return extractfields({
+          resolveTree,
+          entityName: rootEntityName,
+        }) as CrudService.FieldsRequested;
+      }
+    }
+  }
+
+  return fieldsRequested;
 };
