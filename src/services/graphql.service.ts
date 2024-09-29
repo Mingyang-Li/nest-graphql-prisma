@@ -1,9 +1,9 @@
 import { ResolveTree, parseResolveInfo } from 'graphql-parse-resolve-info';
+import { GraphQLResolveInfo } from 'graphql';
 import * as CrudService from '@/services/crud.service';
 import { User } from '@/models/user';
 import { Account } from '@/models/account';
 import { Transaction } from '@/models/transaction';
-import { GraphQLResolveInfo, __Field } from 'graphql';
 
 export const mapNodeWithPluralNameToSingularEntityName = (
   args: string,
