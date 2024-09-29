@@ -1,33 +1,7 @@
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { FindOneArgs } from '@/types/commons/find-one.args';
-import {
-  Args,
-  Field,
-  Mutation,
-  ObjectType,
-  Query,
-  Resolver,
-} from '@nestjs/graphql';
-
-@ObjectType()
-export class User {
-  @Field(() => String, { nullable: true })
-  id?: string;
-
-  @Field(() => String, { nullable: true })
-  email?: string;
-
-  @Field(() => String, { nullable: true })
-  firstName?: string;
-
-  @Field(() => String, { nullable: true })
-  lastName?: string;
-}
-
-@ObjectType()
-export class UserFindManyResponse {
-  @Field(() => [User], { nullable: false })
-  items: User[];
-}
+import { UserFindManyResponse } from '@/types/user/user-find-many.response';
+import { User } from '@/models/user';
 
 @Resolver()
 export class UserResolver {

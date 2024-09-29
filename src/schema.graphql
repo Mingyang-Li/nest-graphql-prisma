@@ -2,16 +2,22 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type User {
+type Transaction {
   id: String
-  email: String
-  firstName: String
-  lastName: String
+  amount: Float
+  currency: String
+  dateOfPayment: DateTime
+  status: String
+  fromAccountId: String
+  fromAccount: Account
+  toAccountId: String
+  toAccount: Account
 }
 
-type UserFindManyResponse {
-  items: [User!]!
-}
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
 
 type Account {
   id: String
@@ -19,12 +25,26 @@ type Account {
   dateActivated: DateTime
   currency: String
   balance: Float
+  userId: String
+  user: User
+  transactionsMadeFromThisAccount: [Transaction!]
+  transactionsMadeToThisAccount: [Transaction!]
 }
 
-"""
-A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
-"""
-scalar DateTime
+type User {
+  id: String
+  email: String
+  firstName: String
+  lastName: String
+  invitedByUserId: String
+  invitedByUser: User
+  usersInvited: [User!]
+  accountsOfThisUser: [Account!]
+}
+
+type UserFindManyResponse {
+  items: [User!]!
+}
 
 type AccountFindManyResponse {
   items: [Account!]!

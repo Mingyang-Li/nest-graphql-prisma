@@ -1,39 +1,8 @@
-import { FindOneArgs } from '@/types/commons/find-one.args';
-import {
-  Args,
-  Field,
-  Float,
-  Info,
-  Mutation,
-  ObjectType,
-  Query,
-  Resolver,
-} from '@nestjs/graphql';
+import { Args, Info, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { GraphQLResolveInfo } from 'graphql';
-
-@ObjectType()
-export class Account {
-  @Field(() => String, { nullable: true })
-  id?: string;
-
-  @Field(() => String, { nullable: true })
-  type?: string;
-
-  @Field(() => Date, { nullable: true })
-  dateActivated?: Date;
-
-  @Field(() => String, { nullable: true })
-  currency?: string;
-
-  @Field(() => Float, { nullable: true })
-  balance?: number;
-}
-
-@ObjectType()
-export class AccountFindManyResponse {
-  @Field(() => [Account], { nullable: false })
-  items: Account[];
-}
+import { FindOneArgs } from '@/types/commons/find-one.args';
+import { AccountFindManyResponse } from '@/types/account/account-find-many.response';
+import { Account } from '@/models/account';
 
 @Resolver()
 export class AccountResolver {

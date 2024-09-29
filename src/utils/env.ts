@@ -26,9 +26,9 @@ export const validateEnvThrowable = (): Env => {
   return validatingEnv.data;
 };
 
-export const wrapSync = <T>(fn: () => T): Result<T, Error> =>{
+export const wrapSync = <T>(fn: () => T): Result<T, Error> => {
   return fromThrowable(fn, (e) => e as Error)();
-}
+};
 
 export const validateEnv = (): Result<Env, Error> =>
   wrapSync<Env>(validateEnvThrowable);

@@ -9,7 +9,7 @@ GraphQL API template that supports:
 1. TBD
 2. TBD
 
-The API is deployed to **\_\_**, it is publically available on https://****\_\_****/graphql
+The API is deployed to **\_\_**, it is publically available on https://\***\*\_\_\*\***/graphql
 
 ## Installation
 
